@@ -101,6 +101,33 @@ public class PlayerFSM : MonoBehaviour
         ChangeState(PlayerStateType.Dropping);
     }
 
+    // 채굴 상태 종료 요청
+    public void ExitMining()
+    {
+        if (CurrentStateType != PlayerStateType.Mining)
+            return;
+
+        ChangeState(PlayerStateType.Free);
+    }
+
+    // 픽업 상태 종료 요청
+    public void ExitPickingUp()
+    {
+        if (CurrentStateType != PlayerStateType.PickingUp)
+            return;
+
+        ChangeState(PlayerStateType.Free);
+    }
+
+    // 드롭 상태 종료 요청
+    public void ExitDropping()
+    {
+        if (CurrentStateType != PlayerStateType.Dropping)
+            return;
+
+        ChangeState(PlayerStateType.Free);
+    }
+
     // ===== 상태 변경 (FSM 내부 전용) =====
     private void ChangeState(PlayerStateType newState)
     {
